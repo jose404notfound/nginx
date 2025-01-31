@@ -1,0 +1,45 @@
+name: CI/CD Pipeline for Nginx-MariaDB
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log in to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker images
+        run: |
+          docker-compose build
+          docker-compose push
+
+      - name: Deploy to VPS
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} root@116.203.102.137 << 'EOF'
+            # Clonamos el repositorio si no está presente
+            if [ ! -d "/root/nginx-mariadb" ]; then
+              git clone https://github.com/jose404notfound/nginx-mariadb.git /root/nginx-mariadb
+            else
+              cd /root/nginx-mariadb && git pull
+            fi
+
+            # Subimos las imágenes y reiniciamos el servicio
+            cd /root/nginx-mariadb
+            docker-compose pull
+            docker-compose up -d
+          EOF
