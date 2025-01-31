@@ -1,8 +1,7 @@
+version: '3.8'
 services:
   nginx:
-    build:
-      context: ./nginx  # El contexto de la construcción, que será el directorio ./nginx
-      dockerfile: Dockerfile  # El Dockerfile dentro de ese directorio
+    build: ./nginx  # Construir la imagen desde el Dockerfile en la carpeta nginx/
     container_name: nginx
     ports:
       - "80:80"
@@ -13,9 +12,7 @@ services:
       - app-network
 
   mariadb:
-    build:
-      context: ./mariadb  # El contexto de la construcción, que será el directorio ./mariadb
-      dockerfile: Dockerfile  # El Dockerfile dentro de ese directorio
+    build: ./mariadb  # Construir la imagen desde el Dockerfile en la carpeta mariadb/
     container_name: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword

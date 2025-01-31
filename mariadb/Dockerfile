@@ -1,11 +1,14 @@
-# Usamos la imagen base de MariaDB
+# Usar la imagen oficial de MariaDB como base
 FROM mariadb:latest
 
-# Establecer variables de entorno para configurar la base de datos
+# Variables de entorno para la configuración de MariaDB
 ENV MYSQL_ROOT_PASSWORD=rootpassword
 ENV MYSQL_DATABASE=mydb
 ENV MYSQL_USER=user
 ENV MYSQL_PASSWORD=password
 
-# Exponer el puerto de MariaDB
+# Exponer el puerto 3306
 EXPOSE 3306
+
+# Comando por defecto para iniciar MariaDB
+CMD ["mysqld"]

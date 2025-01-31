@@ -8,7 +8,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,13 +23,13 @@ jobs:
 
       - name: Build and push Nginx image
         run: |
-          docker-compose -f docker-compose.yml build nginx  # Construir la imagen de Nginx
-          docker-compose -f docker-compose.yml push nginx  # Subir la imagen de Nginx a DockerHub
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx-mariadb-nginx:latest ./nginx
+          docker push ${{ secrets.DOCKER_USERNAME }}/nginx-mariadb-nginx:latest
 
       - name: Build and push MariaDB image
         run: |
-          docker-compose -f docker-compose.yml build mariadb  # Construir la imagen de MariaDB
-          docker-compose -f docker-compose.yml push mariadb  # Subir la imagen de MariaDB a DockerHub
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx-mariadb-mariadb:latest ./mariadb
+          docker push ${{ secrets.DOCKER_USERNAME }}/nginx-mariadb-mariadb:latest
 
       - name: Deploy to VPS
         env:
