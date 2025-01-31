@@ -35,7 +35,25 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
+          # Configurar SSH
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@116.203.102.137 "cd /root/nginx-mariadb && git pull && docker-compose up -d"
+
+          # Conectar al VPS y desplegar
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@116.203.102.137 << 'EOF'
+            # Clonar el repositorio si no existe
+            if [ ! -d "/root/nginx-mariadb" ]; then
+              git clone https://github.com/TU_USUARIO/nginx-mariadb.git /root/nginx-mariadb
+            else
+              cd /root/nginx-mariadb
+              git pull origin main
+            fi
+            
+            # Descargar las imágenes actualizadas de Docker Hub
+            cd /root/nginx-mariadb
+            docker-compose pull
+            
+            # Reiniciar los contenedores con las nuevas imágenes
+            docker-compose up -d --remove-orphans
+EOF
