@@ -1,7 +1,7 @@
 
 # Proyecto Nginx con CI/CD
 
-Este proyecto configura un servidor web utilizando Nginx ejecutados en un contenedor Docker. El despliegue se realiza de manera automática utilizando GitHub Actions (CI/CD), y se gestiona con Docker Compose.
+Este proyecto configura un servidor web utilizando Nginx ejecutado en un contenedor Docker. El despliegue se realiza de manera automática utilizando GitHub Actions (CI/CD), y se gestiona con Docker Compose.
 
 ## Estructura del Proyecto
 
