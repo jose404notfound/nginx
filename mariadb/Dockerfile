@@ -10,5 +10,3 @@ ENV MYSQL_PASSWORD=password
 # Exponer el puerto 3306
 EXPOSE 3306
 
-# Comando por defecto para iniciar MariaDB
-CMD ["mariadb"]
