@@ -11,4 +11,4 @@ ENV MYSQL_PASSWORD=password
 EXPOSE 3306
 
 # Comando por defecto para iniciar MariaDB
-CMD ["mysqld"]
+CMD ["mariadb"]
