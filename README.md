@@ -68,7 +68,7 @@ El archivo de configuración de Nginx se encuentra en `nginx/conf.d/default.conf
 
 ## Notas
 
-- El contenedor de **MariaDB** se configuró con la base de datos `mydb`, el usuario `user` y la contraseña `password`.
+- El contenedor de **MariaDB** se ha configurado con la base de datos `mydb`, el usuario `user` y la contraseña `password`.
 - La base de datos está almacenada en el directorio `./mariadb/data`.
 
 ---
