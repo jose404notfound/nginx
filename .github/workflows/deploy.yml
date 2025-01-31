@@ -46,7 +46,7 @@ jobs:
           fi
           
           # Descargar las imágenes actualizadas de Docker Hub
-          cd /root/nginx-mariadb
+          cd /root/nginx
           docker pull ${DOCKER_USERNAME}/nginx-nginx:latest
           
           # Reiniciar los contenedores con la imagen nueva
