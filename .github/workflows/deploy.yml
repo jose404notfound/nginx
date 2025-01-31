@@ -33,6 +33,9 @@ jobs:
 
       - name: Deploy to VPS
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-          ssh -o StrictHostKeyChecking=no root@116.203.102.137 "cd /root/nginx-mariadb && git pull && docker-compose up -d"
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@116.203.102.137 "cd /root/nginx-mariadb && git pull && docker-compose up -d"
