@@ -1,7 +1,7 @@
 
-# Proyecto Nginx con CI/CD
+# Nginx con CI/CD
 
-Este proyecto configura un servidor web utilizando Nginx ejecutado en un contenedor Docker. El despliegue se realiza de manera automática utilizando GitHub Actions (CI/CD), y se gestiona con Docker Compose.
+Este proyecto básico sirve de ejemplo para configurar un servidor web utilizando Nginx ejecutado en un contenedor Docker. El despliegue se realiza de manera automática utilizando GitHub Actions (CI/CD), y se gestiona con Docker Compose.
 
 ## Estructura del Proyecto
 
@@ -46,7 +46,7 @@ nginx/
      2. El workflow construye las imágenes Docker y las sube automáticamente a Docker Hub.
      3. Luego, el workflow se conecta automáticamente a tu VPS usando SSH y ejecuta los siguientes comandos:
         - `git pull` para obtener los últimos cambios.
-        - `docker-compose up -d` para actualizar los contenedores con la nueva imagen.
+        - `docker compose up -d` para actualizar los contenedores con la nueva imagen.
    
    ¡No es necesario que ejecutes manualmente nada en el VPS!
 
@@ -58,7 +58,7 @@ Una vez que los contenedores estén en ejecución, puedes acceder al servidor Ng
 http://<IP-DE-TU-VPS>
 ```
 
-Verás la página de bienvenida de Nginx.
+Verás la página de Nginx la cual puedes personalizar en el index.html.
 
 ---
 
