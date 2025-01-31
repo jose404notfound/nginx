@@ -52,7 +52,7 @@ jobs:
           
           # Descargar las imágenes actualizadas de Docker Hub
           cd /root/nginx-mariadb
-          docker-compose pull
+          docker pull
           
           # Reiniciar los contenedores con las nuevas imágenes
           docker-compose up -d --remove-orphans
