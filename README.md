@@ -1,14 +1,14 @@
 
-# Proyecto Nginx + MariaDB con CI/CD
+# Proyecto Nginx con CI/CD
 
-Este proyecto configura un servidor web utilizando Nginx como frontend y MariaDB como base de datos, ambos ejecutados en contenedores Docker. El despliegue se realiza de manera automática utilizando GitHub Actions (CI/CD), y los contenedores se gestionan con Docker Compose.
+Este proyecto configura un servidor web utilizando Nginx ejecutados en un contenedor Docker. El despliegue se realiza de manera automática utilizando GitHub Actions (CI/CD), y se gestiona con Docker Compose.
 
 ## Estructura del Proyecto
 
 La estructura del proyecto es la siguiente:
 
 ```
-nginx-mariadb/
+nginx/
 ├── docker-compose.yml          # Configuración de los contenedores Docker
 ├── nginx/
 │   ├── conf.d/
@@ -66,9 +66,3 @@ Verás la página de bienvenida de Nginx.
 
 El archivo de configuración de Nginx se encuentra en `nginx/conf.d/default.conf`. Este archivo define el servidor y el puerto en el que escucha Nginx, así como el directorio raíz de los archivos HTML.
 
-## Notas
-
-- El contenedor de **MariaDB** se ha configurado con la base de datos `mydb`, el usuario `user` y la contraseña `password`.
-- La base de datos está almacenada en el directorio `./mariadb/data`.
-
----
