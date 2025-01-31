@@ -41,7 +41,7 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
 
           # Conectar al VPS y desplegar
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@116.203.102.137 << 'EOF'
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@116.203.102.137 <<EOF
             # Clonar el repositorio si no existe
             if [ ! -d "/root/nginx-mariadb" ]; then
               git clone https://github.com/TU_USUARIO/nginx-mariadb.git /root/nginx-mariadb
