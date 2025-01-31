@@ -55,5 +55,5 @@ jobs:
           docker pull
           
           # Reiniciar los contenedores con las nuevas imágenes
-          docker-compose up -d --remove-orphans
+          docker compose up -d --remove-orphans
           EOF
