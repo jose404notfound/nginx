@@ -35,8 +35,8 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
-          # Conectar al VPS y desplegar
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@116.203.102.137 <<EOF
+          # Conectar al VPS y desplegar. Introduce la IP de tu máquina
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@<IP> <<EOF
           # Clonar el repositorio si no existe
           if [ ! -d "/root/nginx" ]; then
             git clone https://github.com/jose404notfound/nginx.git /root/nginx
