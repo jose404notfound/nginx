@@ -20,7 +20,9 @@ nginx/
 │       └── deploy.yml          # Configuración del pipeline de CI/CD
 └── README.md                   # Documentación del proyecto
 ```
+**¡Importante introducir la IP de tu máquina donde sea necesario!.** 
 
+**Es por esto que la última ejecución aparece errónea, ya que la IP que utilicé para probar el pipeline fue sustituida por una variable, la cual es necesario cambiar por la IP de vuestro VPS para adaptar el ejemplo.** 
 ## Requisitos
 
 - Docker
